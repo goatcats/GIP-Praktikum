@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
 using namespace std;
 
 int caeserCypher() {
@@ -30,12 +29,44 @@ int caeserCypher() {
         encryptedText += curr;
     }
 
-    cout << encryptedText;
+    cout << encryptedText << endl;
+
+    return 0;
+}
+
+int busfahrplan() {
+    int h, m, t;
+
+    do {
+        cout << "Bitte geben Sie die Stunden der Startuhrzeit ein: ? ";
+        cin >> h;
+    } while (h < 0 || h >= 24);
+
+    do {
+        cout << "Bitte geben Sie die Minuten der Startuhrzeit ein: ? ";
+        cin >> m;
+    } while (m < 0 || m >= 60);
+
+    cout << "Der erste Bus fährt also um " << h << ":" << m << " Uhr." << endl;
+
+    do {
+        cout << "Bitte geben Sie die Taktzeit in Minuten ein: ? ";
+        cin >> t;
+    } while (t <= 0 || t > 180);
+
+    while (h < 24) {
+        while (m < 60) {
+            cout << h << ":" << m << " ";
+            m += t;
+        }
+        h += m/60;
+        m %= 60;
+        cout << endl;
+    }
 
     return 0;
 }
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-    return caeserCypher();
+    return busfahrplan();
 }
