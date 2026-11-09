@@ -32,8 +32,13 @@ int main()
         // Dabei berücksichtigen, dass das Quadrat von den Rändern des
         // blauen "Spielfelds" abprallen muss ...
 
-		// TODO
-        // Ihr Code zur Berechnung der neuen Werte von x und y hier ...
+		// Bewegung auf x-Achse anwenden
+        x += delta;
+
+        // Abprallen an den vertikalen Rändern (links/rechts)
+        if (x <= left_border || x + rectangle_size >= right_border) {
+            delta = -delta; // Richtung umkehren
+        }
 
 
         gip_wait(100);
